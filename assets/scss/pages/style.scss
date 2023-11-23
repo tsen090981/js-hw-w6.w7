@@ -1,0 +1,407 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: bottom;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.25;
+    font-family: "Microsoft JhengHei";
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img{
+    max-width: 100%;
+}
+
+$primary-color: #00807E;
+$secondary-color: #64C3BF;
+$text-color: #818A91;
+$alert-color: #B21C01;
+
+*{
+    // outline: 1px solid skyblue;
+    box-sizing: border-box;
+}
+.material-symbols-rounded-fill {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+.d-flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.justify-content-space-evenly{
+    justify-content: space-evenly;
+}
+.align-items-center{
+    align-items: center;
+}
+
+.addTicket-img, .addTicket-form{
+    width: 40%;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        .logo{
+            display: none;
+        }
+        .main-img{
+            margin-bottom: 40px;
+        }
+    }
+}
+.addTicket-panel{
+    padding: 60px 0;
+    max-width: 920px;
+    margin: 120px auto 100px auto;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 12px;
+    align-items: center;
+    @media screen and (max-width: 768px) {
+        margin-top: 10px;
+        padding: 20px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    @media screen and (max-width: 768px) {
+        box-shadow: none;
+    }
+}
+.addTicket-form{
+    display: flex;
+    flex-direction: column;
+    .title{
+        span{
+            font-size: 20px;
+            margin-right: 4px;
+        }
+        padding-bottom: 4px;
+        border-bottom: 3px solid $primary-color;
+        margin-bottom: 40px;
+        font-size: 24px;
+        font-weight: bold;
+        color: $primary-color;
+        @media screen and (max-width: 576px) {
+            margin-bottom: 28px;
+        }
+    }
+    .form-group{
+        margin-bottom: 1rem;
+    }
+    .addTicket-input{
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            align-items: self-start;
+        }
+        label{
+            color: $primary-color;
+            font-size: 1rem;
+            text-wrap: nowrap;
+            margin-right: 31px;
+            font-weight: bold;
+            @media screen and (max-width: 576px) {
+                margin-bottom: 8px;
+            }
+        }
+        input,select,textarea{
+            width: 72%;
+            min-height: 38px;
+            border: none;
+            border-bottom: 1px solid $primary-color;
+            background-color: #FAFAFA;
+            font-size: 1rem;
+            color: $text-color;
+            text-indent: .5rem;
+            &::placeholder{
+                color: $text-color;
+                font-size: 1rem;
+                text-indent: .5rem;
+            }
+            @media screen and (max-width: 768px) {
+                width: 90%;
+            }
+            @media screen and (max-width: 576px) {
+                width: 100%;
+            }
+        }
+        textarea{
+            min-height: 111px;
+        }
+        select{
+            width: 73%;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+        }
+    }
+    .alert-message{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 4px;
+        p{
+            width: 72%;
+            align-items: center;
+            color: $alert-color;
+            font-size: .85rem;
+            span{
+                font-size: .85rem;
+                margin-right: 4px;
+            }
+        }
+    }
+    .btn{
+        border: none;
+        background-color: $primary-color;
+        color: white;
+        font-size: 1.25rem;
+        padding: 10px 40px;
+        border-radius: 5px;
+        transition: .3s;
+        align-self: flex-end;
+        &:hover{
+            background-color: $secondary-color;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 768px) {
+            align-self: center;
+        }
+    }
+}
+section.main-content{
+    padding: 56px 20px 119px 20px;
+    background-color: #F7F7F7;
+    margin: auto;
+    .search-area{
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 920px;
+        margin: auto;
+        margin-bottom: 28px;
+        color: $text-color;
+        .search-bar{
+            padding-top: 20px;
+        }
+        select{
+            width: 300px;
+            height: 38px;
+            text-indent: .5rem;
+            margin-right: 30px;
+            color: $text-color;
+            font-size: 1rem;
+        }
+        .totalNum{
+            text-wrap: nowrap;
+        }
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 16px;
+            select{
+                width: 260px;
+                max-width: 920px;
+                margin-right: 20px;
+            }
+        }
+        @media screen and (max-width: 576px) {
+            .search-bar{
+                flex-direction: column;
+                width: 100%;
+            }
+            select{
+                width: 100%;
+                margin-right: 0px;
+                margin-bottom: 20px;
+            }
+        }
+        .c3-chart text{
+            font-size: 14px;
+            fill: #4B4B4B;
+        }
+        .c3-legend-item text{
+            font-size: 14px;
+            fill: #6E6E6E;
+        }
+    }
+    .ticketCard-area{
+        max-width: 1080px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px 2%;
+        .ticketCard{
+            box-shadow: 0px 3px 6px #00000029;
+            width: calc((100% - 4%)/3);
+            border-radius: 0 0 4px 4px;
+            
+            @media screen and (max-width: 768px)  {
+                width: calc((100% - 2%)/2);
+            }
+            @media screen and (max-width: 576px)  {
+                gap: 30px 0;
+                width: 100%;
+            }
+        }
+        .ticketCard-img{
+            position: relative;
+            a{
+                width: 100%;
+                display: inline-block;
+                overflow: hidden;
+                border-radius: 4px 4px 0 0;
+                &:hover{
+                    img{
+                        transform: scale(1.2);
+                    }
+                }
+            }
+            img{
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                transform: scale(1);
+                transition: .3s;
+            }
+            .ticketCard-region{
+                position: absolute;
+                left: 0;
+                top: -12px;
+                display: inline-block;
+                background-color: $secondary-color;
+                padding: 8px 20px;
+                border-radius: 0 4px 4px 0;
+                color: white;
+                font-size: 1.25rem;
+            }
+            .ticketCard-rate{
+                position: absolute;
+                left: 0;
+                top: 165px;
+                background-color: $primary-color;
+                color: white;
+                padding: 5px 8px;
+                border-radius: 0 4px 4px 0;
+                font-size: 1rem;
+            }
+        }
+        .ticketCard-content{
+            background-color: #fff;
+            padding: 20px 20px 14px 20px;
+            border-radius: 0 0 4px 4px;
+           .ticketCard-title{
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: $primary-color;
+            padding-bottom: 4px;
+            border-bottom: 2px solid $primary-color;
+            margin-bottom: 16px;
+           }
+           .ticketCard-text{
+            color: $text-color;
+            height: 111px;
+            margin-bottom: 32px;
+            }
+           .ticketCard-info{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p{
+                color: $primary-color;
+                font-weight: bold;
+            }
+            .ticketCard-num{
+                span{
+                    font-size: 20px;
+                    margin-right: 6px;
+                }
+            }
+            .ticketCard-price{
+                display: flex;
+                align-items: center;
+                font-weight: 400;
+                
+                span{
+                    font-size: 32px;
+                    font-family: Roboto;
+                    margin-left: 4px;
+                }
+            }
+           }
+        }
+    }
+    .cantFind-area.display-block{
+        display: block;
+    }
+    .cantFind-area{
+        display: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $primary-color;
+        margin: auto;
+        h3{
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        img{
+            display: block;
+            margin: auto;
+            max-width: 920px;
+            
+        }
+    }
+}
+
+.c3-axis text{
+    fill: #6E6E6E;
+}
+.c3-chart-arcs-title{
+    fill: #4B4B4B;
+}
