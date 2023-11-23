@@ -20,14 +20,14 @@ const cantFindArea = document.querySelector(".cantFind-area");
 
 
 let data;
-
-axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json')
-  .then(function (response) {
-    data = response.data.data;
-    renderList(data);
-    renderC3();
-});
-
+function init(){
+    axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json')
+        .then(function (response) {
+            data = response.data.data;
+            renderList(data);
+            renderC3();
+        });
+}
 
 function renderList(data){
     let str = "";
@@ -63,9 +63,11 @@ function renderList(data){
         `;
         str += content;
         searchCount += 1;
-        totalNum.textContent = `本次搜尋共 ${searchCount} 筆資料`;
+        
     });
     ticketCardArea.innerHTML = str;
+    totalNum.textContent = `本次搜尋共 ${searchCount} 筆資料`;
+    
 };
 
 function alertClear(){
@@ -83,7 +85,6 @@ function renderC3(){
             areaNumObj[item.area] += 1;
         };
     });
-    console.log(areaNumObj);
     let areaAry = Object.keys(areaNumObj);
     let newData = [];
     areaAry.forEach(function(item){
@@ -120,23 +121,28 @@ function renderC3(){
     });
 }
 
+init();
 
 //篩選器邏輯
 regionSearch.addEventListener("change",function(e){
-    ticketCardArea.innerHTML == "";
     cantFindArea.classList.remove("display-block");
-    let filterArea = data.filter(function(el){
-        return e.target.value == el.area;
-    })
-    console.log(filterArea);
+
     let allArea = data.filter(function(el){
         return e.target.value == "";
     });
-    renderList(allArea);
-    renderList(filterArea);
+    
+    let filterArea = data.filter(function(el){
+        return e.target.value == el.area;
+    });
+
+    if(e.target.value == ""){
+        renderList(allArea);
+    }else{
+        renderList(filterArea);
+    }
     
     if(ticketCardArea.innerHTML == ""){
-        ticketCardArea.innerHTML == "";
+        ticketCardArea.innerHTML = "";
         cantFindArea.classList.add("display-block");
         totalNum.textContent = `本次搜尋共 0 筆資料`;
     };
